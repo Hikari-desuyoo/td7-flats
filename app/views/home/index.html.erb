@@ -1,2 +1,19 @@
 <h1>Flats</h1>
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
+
+<% unless @properties.empty? %>
+    <div id="properties">
+    <% @properties.each do |property| %>
+        <div id=<%= "property-#{property.id}" %>>
+            <h4 id="title"><%= property.title %></h4>
+            <p id="description"><%= property.description %></p>
+            <p id="rooms">Quartos: <%= property.rooms %></p>
+            <p id="parking_available">Tem estacionamento? <%= property.parking_available ? "sim" : "não" %></p>
+        </div>
+    <% end %>
+    </div>
+<% else %>
+    <div id="no_properties_note">
+        <p>Nada ainda :(</p>
+    </div>
+<% end %>
