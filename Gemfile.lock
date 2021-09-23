@@ -62,8 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    bindex (0.8.1)
-    bootsnap (1.9.1)
+    bootsnap (1.8.1)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -84,17 +83,16 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.2)
-      activesupport (>= 5.0.0)
-    listen (3.7.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.2)
+    marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.1)
     minitest (5.14.4)
@@ -103,14 +101,9 @@ GEM
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
     public_suffix (4.0.6)
-    puma (5.5.0)
-      nio4r (~> 2.0)
+    puma (3.12.6)
     racc (1.5.2)
     rack (2.2.3)
-    rack-mini-profiler (2.3.3)
-      rack (>= 1.2.0)
-    rack-proxy (0.7.0)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4.1)
@@ -161,18 +154,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
-    semantic_range (3.0.0)
-    spring (3.0.0)
+    ruby_dep (1.5.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -182,22 +164,8 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     thor (1.1.0)
-    tilt (2.0.10)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    web-console (4.1.0)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -210,25 +178,15 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (>= 1.4.4)
+  bootsnap (>= 1.1.0)
   byebug
   capybara
-  jbuilder (~> 2.7)
-  listen (~> 3.3)
-  puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
-  rails (~> 6.1.4, >= 6.1.4.1)
-  rspec-rails
-  sass-rails (>= 6)
-  spring
-  sqlite3 (~> 1.4)
-  turbolinks (~> 5)
+  listen (>= 3.0.5, < 3.2)
+  puma (~> 3.11)
+  rails (~> 6.1.4.1)
+  rspec-rails (~> 4.0.1)
+  sqlite3
   tzinfo-data
-  web-console (>= 4.1.0)
-  webpacker (~> 5.0)
-
-RUBY VERSION
-   ruby 2.7.0p0
 
 BUNDLED WITH
    2.2.24
