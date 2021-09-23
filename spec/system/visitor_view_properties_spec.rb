@@ -32,7 +32,7 @@ def preset_properties
 end
 
 def sim_nao(boolean)
-  boolean ? "sim" : "nao"
+  boolean ? "sim" : "não"
 end
 
 describe 'Visitor visit homepage' do
@@ -43,7 +43,7 @@ describe 'Visitor visit homepage' do
 
     expect(page).to have_no_css('div#no_properties_note')
     properties.each do |property|    
-      property_css_beginning = "div#property-#{property.id} > #"
+      property_css_beginning = "div#property-#{property.id} ."
       expect(page).to have_css(property_css_beginning + 'title', text: property.title)
       expect(page).to have_css(property_css_beginning + 'description', text: property.description)
       expect(page).to have_css(property_css_beginning + 'rooms', text: property.rooms.to_s)
@@ -63,24 +63,24 @@ describe 'Visitor visit homepage' do
 
     visit root_path
 
-    find("div#property-#{properties[0].id} > .details_link").click
+    find("div#property-#{properties[0].id} .details_link").click
 
-    css_beginning = "div#information > #"
+    css_beginning = "div#information ."
     expect(page).to have_css(css_beginning + 'title', text: properties[0].title)
     expect(page).to have_css(css_beginning + 'description', text: properties[0].description)
     expect(page).to have_css(css_beginning + 'rooms', text: properties[0].rooms.to_s)
-    expect(page).to have_css(css_beginning + 'allow_pets', text: sim_nao(property[0].allow_pets))
+    expect(page).to have_css(css_beginning + 'allow_pets', text: sim_nao(properties[0].allow_pets))
     expect(page).to have_css(css_beginning + 'daily_price', text: properties[0].daily_price.to_s)
     expect(page).to have_css(css_beginning + 'rooms', text: properties[0].rooms.to_s)
     expect(page).to have_css(css_beginning + 'bathrooms', text: properties[0].bathrooms.to_s)
-    expect(page).to have_css(css_beginning + 'parking_available', text: sim_nao(property[0].parking_available))
+    expect(page).to have_css(css_beginning + 'parking_available', text: sim_nao(properties[0].parking_available))
   end
 
   it 'and goes back to menu' do
     properties = preset_properties
 
     visit root_path
-    find("div#property-#{properties[0].id} > .details_link").click
+    find("div#property-#{properties[0].id} .details_link").click
     find(".back_button").click
 
     expect(current_path).to eq root_path

@@ -5,10 +5,10 @@
     <div id="properties">
     <% @properties.each do |property| %>
         <div id=<%= "property-#{property.id}" %>>
-            <h4 id="title"><%= property.title %></h4>
-            <p id="description"><%= property.description %></p>
-            <p id="rooms">Quartos: <%= property.rooms %></p>
-            <p id="parking_available">Tem estacionamento? <%= property.parking_available ? "sim" : "não" %></p>
+            <h4><%= link_to property.title, property_path(property), :class => "details_link title" %></h4>
+            <p class="description"><%= property.description %></p>
+            <p class="rooms">Quartos: <%= property.rooms %></p>
+            <p class="parking_available">Tem estacionamento? <%= property.parking_available ? "sim" : "não" %></p>
         </div>
     <% end %>
     </div>
