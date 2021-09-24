@@ -14,4 +14,18 @@ class PropertiesController < ApplicationController
         property = Property.create(property_hash)
         redirect_to property
     end
+
+    def edit
+        @property = Property.find(params[:id])
+    end
+
+    def update
+        @property = Property.find(params[:id])
+        property_hash = params.require(:property).permit(
+            :title, :description, :rooms, :bathrooms, :allow_pets, :parking_available, :daily_price
+        )
+        @property.update(property_hash)
+
+        redirect_to @property
+    end
 end

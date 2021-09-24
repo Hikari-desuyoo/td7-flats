@@ -1,0 +1,35 @@
+
+<h1>Editando imóvel: <%= @property.title %> </h1>
+<%= form_for @property do |f| %>
+  <div>
+    <%= f.label :title, 'Título' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :rooms, 'Quartos' %>
+    <%= f.number_field :rooms %>
+  </div>
+  <div>
+    <%= f.label :bathrooms, 'Banheiros' %>
+    <%= f.number_field :bathrooms %>
+  </div>
+  <div>
+    <%= f.label :daily_price, 'Diária' %>
+    <%= f.text_field :daily_price %>
+  </div>
+  <div>
+    <%= f.check_box :allow_pets %>
+    <%= f.label :allow_pets, 'Aceita Pets' %>
+  </div>
+  <div>
+    <%= f.check_box :parking_available %>
+    <%= f.label :parking_available, 'Vaga de Estacionamento' %>
+  </div>
+  <%= f.submit 'Editar' %>
+<% end %>
+
+<%= link_to 'Voltar', property_path(@property), :class => 'back_button' %>
