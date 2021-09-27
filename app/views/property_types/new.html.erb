@@ -1,0 +1,23 @@
+<style>
+  .field_with_errors { display: inline; }
+</style>
+
+<h1>Cadastre um tipo de imóvel</h1>
+
+<% if @property_type.errors.any? %>
+  <ul>
+    <% @property_type.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @property_type) do |f| %>
+  <div>
+    <%= f.label :name, 'Escreva um novo tipo de propriedade!' %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit 'Enviar' %>
+<% end %>
+
+<%= link_to 'Voltar', flash[:previous_page], :class => 'back_button' %>

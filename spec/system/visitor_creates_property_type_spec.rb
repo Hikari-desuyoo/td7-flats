@@ -40,12 +40,10 @@ describe 'Visitor visit homepage' do
         #act
         visit root_path
         find("#type_register_link").click
-        type_register_path = current_path
         register_type('tipo_teste')
 
         #assert
-        expect(current_path).to eq type_register_path
-        expect(page).to have_css('div#unique_error')
+        expect(page).to have_content('Já existe com esse nome')
     end
 
     it 'clicks register button, clicks type register button, and gets redirected to register page again' do
