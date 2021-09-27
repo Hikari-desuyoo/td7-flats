@@ -8,11 +8,12 @@ class PropertiesController < ApplicationController
     end
 
     def create
-        property_hash = params.require(:property).permit(
-            :title, :description, :rooms, :bathrooms, :allow_pets, :parking_available, :daily_price
-        )
-        property = Property.create(property_hash)
-        redirect_to property
+        @property = Property.new(property_hash)
+        if @property.save
+            redirect_to @property
+        else
+            render :new
+        end
     end
 
     def edit
@@ -21,11 +22,14 @@ class PropertiesController < ApplicationController
 
     def update
         @property = Property.find(params[:id])
-        property_hash = params.require(:property).permit(
-            :title, :description, :rooms, :bathrooms, :allow_pets, :parking_available, :daily_price
-        )
         @property.update(property_hash)
 
         redirect_to @property
+    end
+
+    def property_hash
+        params.require(:property).permit(
+            :title, :description, :rooms, :bathrooms, :allow_pets, :parking_available, :daily_price
+        )
     end
 end

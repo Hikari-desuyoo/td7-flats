@@ -28,6 +28,15 @@ describe 'Visitor visit homepage, clicks register' do
 
   end
 
+  it 'and fills in nothing and get error messages' do
+    visit root_path
+    find("#register_link").click
+    click_on 'commit'
+
+
+    expect(page).to have_content('Obrigatório preencher', count: 5)
+  end
+
   it 'and goes back to menu' do
     visit root_path
     find("#register_link").click

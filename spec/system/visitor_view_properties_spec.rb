@@ -2,30 +2,40 @@ require 'rails_helper'
 
 def preset_properties
   properties = []
-  properties << Property.create({ 
+  properties << Property.create!({ 
     title: 'titulo1', 
     description: 'descrição1',
     rooms: 3, 
+    bathrooms: 7,
+    daily_price: 400,
     parking_available: true
   })
 
-  properties << Property.create({ 
+  properties << Property.create!({ 
     title: 'titulo2', 
     description: 'descrição2',
     rooms: 20, 
+    bathrooms: 2,
+    daily_price: 401,
     parking_available: false
   })
 
-  properties << Property.create({ 
+  properties << Property.create!({ 
     title: 'titulo2', 
     description: 'descrição2',
+    rooms: 2, 
+    bathrooms: 9,
+    daily_price: 402,
     parking_available: false
   })
 
-  properties << Property.create({ 
+  properties << Property.create!({ 
     title: 'casa em copacabana', 
     description: 'uma casa, em copacabana',
+    rooms: 3, 
     parking_available: false,
+    bathrooms: 32,
+    daily_price: 403,
     allow_pets: true
   })
   properties
