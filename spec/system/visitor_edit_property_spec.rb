@@ -6,14 +6,16 @@ def sim_nao(boolean)
 
 describe 'Visitor visit homepage, clicks first edit button' do
   it 'and successfully edits its title' do
-    Property.create({ 
+    property_type = PropertyType.create(name: 'casa')
+    Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
       rooms: 3, 
       parking_available: true,
       allow_pets: false,
       daily_price: 400.25,
-      bathrooms: 5
+      bathrooms: 5,
+      property_type: property_type
     })
 
     visit root_path
@@ -32,7 +34,56 @@ describe 'Visitor visit homepage, clicks first edit button' do
     expect(page).to have_css(css_beginning + 'allow_pets', text: 'não')
     expect(page).to have_css(css_beginning + 'daily_price', text: '400.25')
     expect(page).to have_css(css_beginning + 'parking_available', text: 'sim')
+    expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
+  end
 
+  it 'and successfully edits its type' do
+    casa = PropertyType.create(name: 'casa')
+    apartamento = PropertyType.create(name: 'apartamento')
+    Property.create!({ 
+      title: 'titulo1', 
+      description: 'descrição1',
+      rooms: 3, 
+      parking_available: true,
+      allow_pets: false,
+      daily_price: 400.25,
+      bathrooms: 5,
+      property_type: apartamento
+    })
+
+    visit root_path
+    find("div#property-1 .details_link").click
+    find('#edit_link').click
+
+    select 'casa', from: 'property_property_type_id'
+    click_on 'commit'
+
+    css_beginning = 'div#information .'
+    expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
+  end
+
+  it 'and after not editing property_type, property_type doesnt change' do
+    casa = PropertyType.create(name: 'casa')
+    apartamento = PropertyType.create(name: 'apartamento')
+    Property.create!({ 
+      title: 'titulo1', 
+      description: 'descrição1',
+      rooms: 3, 
+      parking_available: true,
+      allow_pets: false,
+      daily_price: 400.25,
+      bathrooms: 5,
+      property_type: apartamento
+    })
+
+    visit root_path
+    find("div#property-1 .details_link").click
+    find('#edit_link').click
+
+    click_on 'commit'
+
+    css_beginning = 'div#information .'
+    expect(page).to have_css(css_beginning + 'property_type', text: 'Apartamento')
 
   end
 end

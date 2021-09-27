@@ -6,6 +6,8 @@ def sim_nao(boolean)
 
 describe 'Visitor visit homepage, clicks register' do
   it 'and successfully registers a property' do
+    PropertyType.create!(name: 'casa')
+
     visit root_path
     find("#register_link").click
     fill_in 'property_title', with: 'titulo1'
@@ -13,6 +15,7 @@ describe 'Visitor visit homepage, clicks register' do
     fill_in 'property_rooms', with: '3'
     fill_in 'property_bathrooms', with: '2'
     fill_in 'property_daily_price', with: 200
+    select 'casa', from: 'property_property_type_id'
     check 'property_allow_pets'
     check 'property_parking_available'
     click_on 'commit'
@@ -25,10 +28,13 @@ describe 'Visitor visit homepage, clicks register' do
     expect(page).to have_css(css_beginning + 'allow_pets', text: 'sim')
     expect(page).to have_css(css_beginning + 'daily_price', text: '200')
     expect(page).to have_css(css_beginning + 'parking_available', text: 'sim')
+    expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
 
   end
 
   it 'and fills in nothing and get error messages' do
+    PropertyType.create!(name: 'casa')
+    
     visit root_path
     find("#register_link").click
     click_on 'commit'

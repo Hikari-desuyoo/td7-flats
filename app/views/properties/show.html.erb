@@ -2,6 +2,7 @@
 <div id = information>
     <h3 class='title'><%= @property.title %></h3>
     <h4 class='description'><%= @property.description %></p>
+    <h4 class='property_type'>Tipo: <%= @property.property_type.name.capitalize %></p>
     <p class='rooms'>Número de cômodos:<%= @property.rooms %></p>
     <p class='bathrooms'>Número de banheiros:<%= @property.bathrooms %></p>
     <p class='parking_available'>Estacionamento: <%= @property.parking_available ? 'sim' : 'não' %></p>

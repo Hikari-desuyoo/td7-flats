@@ -36,6 +36,10 @@
     <%= f.text_field :daily_price %>
   </div>
   <div>
+    <%= f.label :property_type_id, 'Tipo de propriedade:' %>
+    <%= f.select :property_type_id, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
+  </div>
+  <div>
     <%= f.check_box :allow_pets %>
     <%= f.label :allow_pets, 'Aceita Pets' %>
   </div>
