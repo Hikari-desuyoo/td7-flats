@@ -85,7 +85,7 @@ describe 'Visitor visit homepage' do
     expect(page).to have_css(css_beginning + 'description', text: properties[0].description)
     expect(page).to have_css(css_beginning + 'rooms', text: properties[0].rooms.to_s)
     expect(page).to have_css(css_beginning + 'allow_pets', text: sim_nao(properties[0].allow_pets))
-    expect(page).to have_css(css_beginning + 'daily_price', text: properties[0].daily_price.to_s)
+    expect(page).to have_css(css_beginning + 'daily_price', text: properties[0].daily_price.to_i)
     expect(page).to have_css(css_beginning + 'rooms', text: properties[0].rooms.to_s)
     expect(page).to have_css(css_beginning + 'bathrooms', text: properties[0].bathrooms.to_s)
     expect(page).to have_css(css_beginning + 'parking_available', text: sim_nao(properties[0].parking_available))

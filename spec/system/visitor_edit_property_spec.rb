@@ -32,7 +32,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
     expect(page).to have_css(css_beginning + 'rooms', text: '3')
     expect(page).to have_css(css_beginning + 'bathrooms', text: '5')
     expect(page).to have_css(css_beginning + 'allow_pets', text: 'não')
-    expect(page).to have_css(css_beginning + 'daily_price', text: '400.25')
+    expect(page).to have_css(css_beginning + 'daily_price', text: '400,25')
     expect(page).to have_css(css_beginning + 'parking_available', text: 'sim')
     expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
   end

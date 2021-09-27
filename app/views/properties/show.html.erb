@@ -7,7 +7,8 @@
     <p class='bathrooms'>Número de banheiros:<%= @property.bathrooms %></p>
     <p class='parking_available'>Estacionamento: <%= @property.parking_available ? 'sim' : 'não' %></p>
     <p class='allow_pets'>Permite pets: <%= @property.allow_pets ? 'sim' : 'não' %></p>
-    <h4 class='daily_price'>Preço da diária: R$ <%= @property.daily_price %></h4>
+    <h4 class='daily_price'>Preço da diária: <%= number_to_currency(@property.daily_price, unit: 'R$', separator: ',', format: "%u %n") %></h4>
+    
 </div>
 
 <%= link_to 'Voltar', root_path, :class => 'back_button' %>
