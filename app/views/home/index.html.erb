@@ -6,6 +6,15 @@
     <%= link_to "Cadastrar tipo de imóvel", new_property_type_path, :id => 'type_register_link' %>
 </nav>
 
+<div id="filtering">
+    <h3>Filtrar</h3>
+    <%= form_with url: filter_path, method: :get do |form| %>
+        <%= form.label :property_type_filter, 'Tipo de propriedade:' %>
+        <%= form.select :property_type_filter, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
+        <%= form.submit 'Procurar' %>
+    <% end %>
+</div>
+
 <% unless @properties.empty? %>
     <div id="properties">
     <% @properties.each do |property| %>
