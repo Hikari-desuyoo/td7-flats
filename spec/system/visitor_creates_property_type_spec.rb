@@ -39,7 +39,7 @@ describe 'Visitor visit homepage' do
         #act
         visit root_path
         find("#type_register_link").click
-        register_type('tipo_teste')
+        register_type('tipO_teste')
 
         #assert
         expect(page).to have_content('Já existe com esse nome')

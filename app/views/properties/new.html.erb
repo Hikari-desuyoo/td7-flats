@@ -24,7 +24,7 @@
     <%= f.label :property_location_id, 'Região da propriedade:' %>
     <%= f.select :property_location_id, @property_locations.map {|l_type| [l_type.name, l_type.id]} %>
   </div>
-  <%# link_to "A sua região não está na lista?", new_property_location_path, :id => 'location_register_link' %>
+  <%= link_to "A sua região não está na lista?", new_property_location_path, :id => 'location_register_link' %>
   <div>
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title %>

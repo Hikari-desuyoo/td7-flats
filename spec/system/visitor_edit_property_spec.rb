@@ -69,6 +69,35 @@ describe 'Visitor visit homepage, clicks first edit button' do
     expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
   end
 
+  it 'and successfully edits its location' do
+    apartamento = PropertyType.create(name: 'apartamento')
+
+    rio = PropertyLocation.create!(name: 'rio')
+    minas = PropertyLocation.create!(name: 'minas')
+
+    Property.create!({ 
+      title: 'titulo1', 
+      description: 'descrição1',
+      rooms: 3, 
+      parking_available: true,
+      allow_pets: false,
+      daily_price: 400.25,
+      bathrooms: 5,
+      property_location: rio, 
+      property_type: apartamento
+    })
+
+    visit root_path
+    find("div#property-1 .details_link").click
+    find('#edit_link').click
+
+    select 'minas', from: 'property_property_location_id'
+    click_on 'commit'
+
+    css_beginning = 'div#information .'
+    expect(page).to have_css(css_beginning + 'property_location', text: 'minas')
+  end
+
   it 'and after not editing property_type, property_type doesnt change' do
     casa = PropertyType.create(name: 'casa')
     apartamento = PropertyType.create(name: 'apartamento')

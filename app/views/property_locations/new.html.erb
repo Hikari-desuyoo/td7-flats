@@ -1,0 +1,23 @@
+<style>
+  .field_with_errors { display: inline; }
+</style>
+
+<h1>Cadastre uma região</h1>
+
+<% if @property_location.errors.any? %>
+  <ul>
+    <% @property_location.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @property_location) do |f| %>
+  <div>
+    <%= f.label :name, 'Escreva uma nova região!' %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit 'Enviar' %>
+<% end %>
+
+<%= link_to 'Voltar', flash[:previous_page], :class => 'back_button' %>

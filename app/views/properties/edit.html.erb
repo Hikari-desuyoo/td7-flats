@@ -30,6 +30,10 @@
     <%= f.select :property_type_id, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
   </div>
   <div>
+    <%= f.label :property_location_id, 'Região:' %>
+    <%= f.select :property_location_id, @property_locations.map {|l_type| [l_type.name, l_type.id]} %>
+  </div>
+  <div>
     <%= f.check_box :parking_available %>
     <%= f.label :parking_available, 'Vaga de Estacionamento' %>
   </div>
