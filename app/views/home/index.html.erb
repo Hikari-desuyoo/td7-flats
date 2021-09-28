@@ -19,8 +19,8 @@
         Filtrar por: 
         <%= form.label :property_type_filter, 'Tipo de propriedade ' %>
         <%= form.select :property_type_filter, options_for_select(
-            @property_types.map {|p_type| [p_type.name, p_type.id]}, 
-            selected = (@selected_property_type ? @selected_property_type.id : -1)
+            @property_types_selection_list, 
+            selected = @selected_property_type_id
             ) %>
         <%= form.submit 'Procurar' %>
     <% end %>
