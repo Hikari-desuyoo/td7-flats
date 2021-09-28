@@ -7,6 +7,7 @@ def sim_nao(boolean)
 describe 'Visitor visit homepage, clicks register' do
   it 'and successfully registers a property' do
     PropertyType.create!(name: 'casa')
+    PropertyLocation.create!(name: 'minas gerais')
 
     visit root_path
     find("#register_link").click
@@ -16,6 +17,7 @@ describe 'Visitor visit homepage, clicks register' do
     fill_in 'property_bathrooms', with: '2'
     fill_in 'property_daily_price', with: 200
     select 'casa', from: 'property_property_type_id'
+    select 'minas gerais', from: 'property_property_location_id'
     check 'property_allow_pets'
     check 'property_parking_available'
     click_on 'commit'
@@ -29,28 +31,31 @@ describe 'Visitor visit homepage, clicks register' do
     expect(page).to have_css(css_beginning + 'daily_price', text: '200')
     expect(page).to have_css(css_beginning + 'parking_available', text: 'sim')
     expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
+    expect(page).to have_css(css_beginning + 'property_location', text: 'minas gerais')
 
   end
 
   it 'and fills in nothing and get error messages' do
     PropertyType.create!(name: 'casa')
+    PropertyLocation.create!(name: 'minas gerais')
     
     visit root_path
     find("#register_link").click
     click_on 'commit'
-
 
     expect(page).to have_content('Obrigatório preencher', count: 5)
   end
 
   it 'and fills in text into integer fields and get error messages' do
     PropertyType.create!(name: 'casa')
+    PropertyLocation.create!(name: 'minas gerais')
     
     visit root_path
     find("#register_link").click
     fill_in 'property_title', with: 'titulo1'
     fill_in 'property_description', with: 'descrição1'
     select 'casa', from: 'property_property_type_id'
+    select 'minas gerais', from: 'property_property_location_id'
     check 'property_allow_pets'
     check 'property_parking_available'
 

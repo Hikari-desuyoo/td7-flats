@@ -7,6 +7,8 @@ def sim_nao(boolean)
 describe 'Visitor visit homepage, clicks first edit button' do
   it 'and successfully edits its title' do
     property_type = PropertyType.create(name: 'casa')
+    rio = PropertyLocation.create!(name: 'rio')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
@@ -15,6 +17,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       allow_pets: false,
       daily_price: 400.25,
       bathrooms: 5,
+      property_location: rio, 
       property_type: property_type
     })
 
@@ -40,6 +43,9 @@ describe 'Visitor visit homepage, clicks first edit button' do
   it 'and successfully edits its type' do
     casa = PropertyType.create(name: 'casa')
     apartamento = PropertyType.create(name: 'apartamento')
+
+    rio = PropertyLocation.create!(name: 'rio')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
@@ -48,6 +54,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       allow_pets: false,
       daily_price: 400.25,
       bathrooms: 5,
+      property_location: rio, 
       property_type: apartamento
     })
 
@@ -65,6 +72,9 @@ describe 'Visitor visit homepage, clicks first edit button' do
   it 'and after not editing property_type, property_type doesnt change' do
     casa = PropertyType.create(name: 'casa')
     apartamento = PropertyType.create(name: 'apartamento')
+
+    rio = PropertyLocation.create!(name: 'rio')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
@@ -73,6 +83,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       allow_pets: false,
       daily_price: 400.25,
       bathrooms: 5,
+      property_location: rio, 
       property_type: apartamento
     })
 

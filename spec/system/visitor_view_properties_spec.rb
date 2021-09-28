@@ -3,13 +3,15 @@ require 'rails_helper'
 def preset_properties
   properties = []
   property_type = PropertyType.create(name: 'casa')
+  property_location = PropertyLocation.create(name: 'rio de janeiro')
   properties << Property.create!({ 
     title: 'titulo1', 
     description: 'descrição1',
     rooms: 3, 
     bathrooms: 7,
     daily_price: 400,
-    property_type_id: property_type.id,
+    property_type: property_type,
+    property_location: property_location,
     parking_available: true
   })
 
@@ -19,7 +21,8 @@ def preset_properties
     rooms: 20, 
     bathrooms: 2,
     daily_price: 401,
-    property_type_id: property_type.id,
+    property_type: property_type,
+    property_location: property_location,
     parking_available: false
   })
 
@@ -29,7 +32,8 @@ def preset_properties
     rooms: 2, 
     bathrooms: 9,
     daily_price: 402,
-    property_type_id: property_type.id,
+    property_type: property_type,
+    property_location: property_location,
     parking_available: false
   })
 
@@ -40,7 +44,8 @@ def preset_properties
     parking_available: false,
     bathrooms: 32,
     daily_price: 403,
-    property_type_id: property_type.id,
+    property_type: property_type,
+    property_location: property_location,
     allow_pets: true
   })
   properties
