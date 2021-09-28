@@ -2,7 +2,49 @@ require 'rails_helper'
 
 
 describe 'Visitor visit homepage, filters by property type' do
-    it 'and filters nothing' do
+    it 'and filters by nothing(show all properties normally)' do
+      #arrange
+      pousada = PropertyType.create!(name: 'pousada')
+      casa = PropertyType.create!(name: 'casa')
+
+      properties = []
+
+      properties << Property.create!({ 
+        title: 'titulo1', 
+        description: 'descrição1',
+        rooms: 3, 
+        bathrooms: 7,
+        daily_price: 400,
+        property_type: casa,
+        parking_available: true
+      })
+    
+      properties << Property.create!({ 
+        title: 'titulo2', 
+        description: 'descrição2',
+        rooms: 20, 
+        bathrooms: 2,
+        daily_price: 401,
+        property_type: pousada,
+        parking_available: false
+      })
+
+      #act
+      visit root_path
+      within('div#filtering') do
+        click_on 'commit'
+      end
+
+      #assert
+      within('div#properties') do
+          property_css_beginning = 'div#property-'
+          expect(page).to have_css(property_css_beginning+"#{properties[0].id}")
+          expect(page).to have_css(property_css_beginning+"#{properties[1].id}")
+      end
+
+    end
+
+    it 'and have no results after filtering' do
         pousada = PropertyType.create!(name: 'pousada')
         casa = PropertyType.create!(name: 'casa')
         apartamento = PropertyType.create!(name: 'apartamento')

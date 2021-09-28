@@ -32,7 +32,6 @@ describe 'Visitor visit homepage' do
         expect(current_path).to eq root_path
     end
 
-
     it 'clicks type register button, and show error when creating already existing property type' do
         #arrange
         PropertyType.create!(name: 'tipo_teste')
