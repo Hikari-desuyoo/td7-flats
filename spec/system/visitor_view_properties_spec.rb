@@ -61,8 +61,6 @@ describe 'Visitor visit homepage' do
       property_css_beginning = "div#property-#{property.id} ."
       expect(page).to have_css(property_css_beginning + 'title', text: property.title)
       expect(page).to have_css(property_css_beginning + 'description', text: property.description)
-      expect(page).to have_css(property_css_beginning + 'rooms', text: property.rooms.to_s)
-      expect(page).to have_css(property_css_beginning + 'parking_available', text: sim_nao(property.parking_available))
     end
 
   end

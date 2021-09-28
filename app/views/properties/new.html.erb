@@ -16,6 +16,11 @@
 
 <%= form_with(model: @property) do |f| %>
   <div>
+    <%= f.label :property_type_id, 'Tipo de propriedade:' %>
+    <%= f.select :property_type_id, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
+  </div>
+  <%= link_to "O seu tipo de propriedade não está na lista?", new_property_type_path, :id => 'type_register_link' %>
+  <div>
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title %>
   </div>
@@ -35,11 +40,6 @@
     <%= f.label :daily_price, 'Diária' %>
     <%= f.text_field :daily_price %>
   </div>
-  <div>
-    <%= f.label :property_type_id, 'Tipo de propriedade:' %>
-    <%= f.select :property_type_id, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
-  </div>
-  <%= link_to "O seu tipo de propriedade não está na lista?", new_property_type_path, :id => 'type_register_link' %>
   <div>
     <%= f.check_box :allow_pets %>
     <%= f.label :allow_pets, 'Aceita Pets' %>

@@ -1,33 +1,48 @@
-<h1>Flats</h1>
-<h3>Boas vindas ao sistema de locação de apartamentos</h3>
+<style>
+    #filtering { display: inline-block; }
+</style>
 
-<nav>
-    <%= link_to "Cadastrar imóvel", new_property_path, :id => 'register_link' %>
-    <%= link_to "Cadastrar tipo de imóvel", new_property_type_path, :id => 'type_register_link' %>
-</nav>
+<header>
+    <h1>Flats</h1>
+    <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
+    <nav>
+        <%= link_to "Cadastrar imóvel", new_property_path, :id => 'register_link' %>
+        <%= link_to "Cadastrar tipo de imóvel", new_property_type_path, :id => 'type_register_link' %>
+    </nav>
+</header>
+
+<br>
 <div id="filtering">
-    <h3>Filtrar</h3>
+    <h4>
     <%= form_with url: filter_path, method: :get do |form| %>
-        <%= form.label :property_type_filter, 'Tipo de propriedade:' %>
+        Filtrar por: 
+        <%= form.label :property_type_filter, 'Tipo de propriedade ' %>
         <%= form.select :property_type_filter, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
         <%= form.submit 'Procurar' %>
     <% end %>
+    </h4>
 </div>
+
+<h2><%= @filtered ? "Imóveis encontrados:" : "Lista de imóveis:" %></h2>
 
 <% unless @properties.empty? %>
     <div id="properties">
     <% @properties.each do |property| %>
         <div id=<%= "property-#{property.id}" %>>
-            <h4><%= link_to property.title, property_path(property), :class => "details_link title" %></h4>
-            <p class="description"><%= property.description %></p>
-            <p class="rooms">Quartos: <%= property.rooms %></p>
-            <p class="parking_available">Tem estacionamento? <%= property.parking_available ? "sim" : "não" %></p>
+            <h3>
+                <%= link_to property.title, property_path(property), :class => "details_link title" %>
+            </h3>
+            <h4>
+                <p class="description"><%= property.description %>
+                <p class="type">Tipo de imóvel: <%= property.property_type.name.capitalize %>
+            </h4> 
         </div>
+        <br>
     <% end %>
     </div>
 <% else %>
     <div id="no_properties_note">
-        <p>Nada ainda :(</p>
+        <span>Nada ainda :(</span>
     </div>
 <% end %>

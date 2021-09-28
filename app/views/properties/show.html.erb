@@ -1,14 +1,26 @@
-<aside> <%= link_to 'Editar', edit_property_path(@property), :id => 'edit_link' %> </aside>
 <div id = information>
-    <h3 class='title'><%= @property.title %></h3>
-    <h4 class='description'><%= @property.description %></p>
-    <h4 class='property_type'>Tipo: <%= @property.property_type.name.capitalize %></p>
-    <p class='rooms'>Número de cômodos:<%= @property.rooms %></p>
-    <p class='bathrooms'>Número de banheiros:<%= @property.bathrooms %></p>
-    <p class='parking_available'>Estacionamento: <%= @property.parking_available ? 'sim' : 'não' %></p>
-    <p class='allow_pets'>Permite pets: <%= @property.allow_pets ? 'sim' : 'não' %></p>
-    <h4 class='daily_price'>Preço da diária: <%= number_to_currency(@property.daily_price, unit: 'R$', separator: ',', format: "%u %n") %></h4>
-    
+    <h1 class='title'><%= @property.title %></h1>
+    <h2 class='description'><%= @property.description %></h2>
+    <aside> <%= link_to 'Editar', edit_property_path(@property), :id => 'edit_link' %> </aside>
+    <dl>
+        <dt>Tipo:</dt>
+        <dd class='property_type'> <%= @property.property_type.name.capitalize %></dd>
+
+        <dt>Número de quartos:</dt>
+        <dd class='rooms'><%= @property.rooms %></dd>
+        
+        <dt>Número de banheiros:</dt>
+        <dd class='bathrooms'><%= @property.bathrooms %></dd>
+        
+        <dt>Tem estacionamento?</dt>
+        <dd class='parking_available'><%= @property.parking_available ? 'sim' : 'não' %></d>
+        
+        <dt>Permite pets?</dt>
+        <dd class='allow_pets'> <%= @property.allow_pets ? 'sim' : 'não' %></dd>
+        
+        <dt>Preço da diária:</dt>
+        <dd class='daily_price'> <%= number_to_currency(@property.daily_price, unit: 'R$', separator: ',', format: "%u %n") %></dd>
+    <dl>
 </div>
 
 <%= link_to 'Voltar', root_path, :class => 'back_button' %>
