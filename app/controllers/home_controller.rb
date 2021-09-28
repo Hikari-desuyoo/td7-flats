@@ -6,8 +6,8 @@ class HomeController < ApplicationController
         @selected_property_type_id = -1
         @selected_property_location_id = -1
 
-        @property_types_selection_list = property_types_selection_list
-        @property_locations_selection_list = property_locations_selection_list
+        @property_types_selection_list = selection_list PropertyType.all
+        @property_locations_selection_list = selection_list PropertyLocation.all
        
     end
 
@@ -31,25 +31,15 @@ class HomeController < ApplicationController
                 property_location: PropertyLocation.find(@selected_property_location_id)
             )
         end
-        
 
-        @property_types_selection_list = property_types_selection_list
-        @property_locations_selection_list = property_locations_selection_list
-
+        @property_types_selection_list = selection_list PropertyType.all
+        @property_locations_selection_list = selection_list PropertyLocation.all
 
         render :index
     end
 
-    def property_types_selection_list
-        all = PropertyType.all
-        selection_list = all.map {|model_obj| [model_obj.name, model_obj.id]}
-        selection_list = [['QUALQUER UM', -1]] + selection_list
-        selection_list
-    end 
-
-    def property_locations_selection_list
-        all = PropertyLocation.all
-        selection_list = all.map {|model_obj| [model_obj.name, model_obj.id]}
+    def selection_list(model_all)
+        selection_list = model_all.map {|model_obj| [model_obj.name, model_obj.id]}
         selection_list = [['QUALQUER UM', -1]] + selection_list
         selection_list
     end 
