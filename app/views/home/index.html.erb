@@ -18,7 +18,10 @@
     <%= form_with url: filter_path, method: :get do |form| %>
         Filtrar por: 
         <%= form.label :property_type_filter, 'Tipo de propriedade ' %>
-        <%= form.select :property_type_filter, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
+        <%= form.select :property_type_filter, options_for_select(
+            @property_types.map {|p_type| [p_type.name, p_type.id]}, 
+            selected = (@selected_property_type ? @selected_property_type.id : -1)
+            ) %>
         <%= form.submit 'Procurar' %>
     <% end %>
     </h4>
