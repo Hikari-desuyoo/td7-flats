@@ -17,13 +17,27 @@
 <div id="filtering">
     <h4>
     <%= form_with url: filter_path, method: :get do |form| %>
-        Filtrar por: 
-        <%= form.label :property_type_filter, 'Tipo de propriedade ' %>
-        <%= form.select :property_type_filter, options_for_select(
-            @property_types_selection_list, 
-            selected = @selected_property_type_id
-            ) %>
-        <%= form.submit 'Procurar' %>
+        Filtrar:
+        <br>
+        <span>
+            <%= form.label :property_type_filter, 'Tipo de propriedade ' %>
+            <%= form.select :property_type_filter, options_for_select(
+                @property_types_selection_list, 
+                selected = @selected_property_type_id
+                ) %>
+        </span>
+        |
+        <span>
+            <%= form.label :property_location_filter, 'Região ' %>
+            <%= form.select :property_location_filter, options_for_select(
+                @property_locations_selection_list, 
+                selected = @selected_property_location_id
+                ) %>
+        </span>
+        |
+        <span>
+            <%= form.submit 'Procurar' %>
+        </span>
     <% end %>
     </h4>
 </div>
