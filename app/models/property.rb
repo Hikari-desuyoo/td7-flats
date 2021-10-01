@@ -3,8 +3,9 @@ class Property < ApplicationRecord
     belongs_to :property_location
     
     validates :title, :description, :rooms, :bathrooms, :daily_price,
-              presence: { message: 'Obrigatório preencher' }
+              presence: true
 
-    validates :rooms, :bathrooms, numericality: { only_integer: true, message: 'Necessário ser um número' }
-    validates :daily_price, numericality: { message: 'Necessário ser um número' }
+    validates :bathrooms, numericality: { only_integer: true }
+    validates :rooms, numericality: { only_integer: true }
+    validates :daily_price, numericality: true
 end

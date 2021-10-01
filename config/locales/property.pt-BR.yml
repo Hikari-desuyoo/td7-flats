@@ -1,0 +1,21 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property: 'Imóvel'
+    attributes:
+      property:
+        title: 'Título'
+        description: 'Descrição'
+        property_type_id: 'Tipo de imóvel'
+        property_location_id: 'Região'
+        rooms: 'Número de quartos'
+        bathrooms: 'Número de banheiros'
+        daily_price: 'Preço da diária'
+        allow_pets: 'Permite animais de estimação'
+        parking_available: 'Tem estacionamento'
+  properties:
+    new:
+      title: 'Cadastre seu Imóvel'
+      property_type_prompt : 'Escolha um tipo de imóvel'
+      property_location_prompt : 'Escolha a região do seu imóvel'

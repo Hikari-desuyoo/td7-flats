@@ -1,5 +1,5 @@
 class PropertyType < ApplicationRecord
-    validates :name, uniqueness: { message: 'Já existe com esse nome' }
+    validates :name, uniqueness: true
 
     has_many :properties
 end

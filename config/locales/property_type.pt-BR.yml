@@ -1,0 +1,11 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property_type: 'Tipo de imóvel'
+    attributes:
+      property_type:
+        name: 'Nome do tipo'
+  property_types:
+    new:
+      title: 'Cadastre seu tipo de imóvel!'

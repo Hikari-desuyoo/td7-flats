@@ -1,0 +1,11 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property_location: 'Região'
+    attributes:
+      property_location:
+        name: 'Nome da região'
+  property_locations:
+    new:
+      title: 'Cadastre sua Região!'

@@ -43,7 +43,7 @@ describe 'Visitor visit homepage, clicks register' do
     find("#register_link").click
     click_on 'commit'
 
-    expect(page).to have_content('Obrigatório preencher', count: 5)
+    expect(page).to have_content('não pode ficar em branco', count: 5)
   end
 
   it 'and fills in text into integer fields and get error messages' do
@@ -64,7 +64,8 @@ describe 'Visitor visit homepage, clicks register' do
     fill_in 'property_daily_price', with: 'c'
     click_on 'commit'
 
-    expect(page).to have_content('Necessário ser um número', count: 3)
+    expect(page).to have_content('não é um número inteiro')
+    expect(page).to have_content('não é um número', count: 3)
   end
 
   it 'and goes back to menu' do

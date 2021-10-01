@@ -42,7 +42,7 @@ describe 'Visitor visit homepage' do
         register_location('loc_teste')
 
         #assert
-        expect(page).to have_content('Já existe com esse nome')
+        expect(page).to have_content('Nome da região já está em uso')
     end
 
     it 'clicks register button, clicks location register button, and gets redirected to register page again' do

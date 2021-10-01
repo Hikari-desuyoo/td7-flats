@@ -3,7 +3,7 @@
 </style>
 
 
-<h1>Cadastre um imóvel</h1>
+<h1><%= t('.title') %></h1>
 
 
 <% if @property.errors.any? %>
@@ -16,42 +16,48 @@
 
 <%= form_with(model: @property) do |f| %>
   <div>
-    <%= f.label :property_type_id, 'Tipo de propriedade:' %>
-    <%= f.select :property_type_id, @property_types.map {|p_type| [p_type.name, p_type.id]} %>
+    <%= f.label :property_type_id %>
+    <%= f.select :property_type_id, 
+        @property_types.map {|p_type| [p_type.name, p_type.id]},
+        :prompt=>t('.property_type_prompt')
+    %>
   </div>
   <%= link_to "O seu tipo de propriedade não está na lista?", new_property_type_path, :id => 'type_register_link' %>
   <div>
-    <%= f.label :property_location_id, 'Região da propriedade:' %>
-    <%= f.select :property_location_id, @property_locations.map {|l_type| [l_type.name, l_type.id]} %>
+    <%= f.label :property_location_id %>
+    <%= f.select :property_location_id,
+        @property_locations.map {|l_type| [l_type.name, l_type.id]},
+        :prompt=>t('.property_location_prompt')
+    %>
   </div>
   <%= link_to "A sua região não está na lista?", new_property_location_path, :id => 'location_register_link' %>
   <div>
-    <%= f.label :title, 'Título' %>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div>
-    <%= f.label :description, 'Descrição' %>
+    <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
   <div>
-    <%= f.label :rooms, 'Quartos' %>
+    <%= f.label :rooms %>
     <%= f.number_field :rooms %>
   </div>
   <div>
-    <%= f.label :bathrooms, 'Banheiros' %>
+    <%= f.label :bathrooms %>
     <%= f.number_field :bathrooms %>
   </div>
   <div>
-    <%= f.label :daily_price, 'Diária' %>
+    <%= f.label :daily_price %>
     <%= f.text_field :daily_price %>
   </div>
   <div>
     <%= f.check_box :allow_pets %>
-    <%= f.label :allow_pets, 'Aceita Pets' %>
+    <%= f.label :allow_pets %>
   </div>
   <div>
     <%= f.check_box :parking_available %>
-    <%= f.label :parking_available, 'Vaga de Estacionamento' %>
+    <%= f.label :parking_available %>
   </div>
   <%= f.submit 'Enviar' %>
 <% end %>
