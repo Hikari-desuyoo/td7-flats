@@ -7,6 +7,7 @@ class PropertyTypesController < ApplicationController
     def create
         @property_type = PropertyType.new(property_type_hash)
 
+        flash[:previous_page] = flash[:previous_page]
         if @property_type.save
             redirect_to flash[:previous_page]
         else

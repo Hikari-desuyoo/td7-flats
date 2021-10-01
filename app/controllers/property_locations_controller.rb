@@ -7,6 +7,8 @@ class PropertyLocationsController < ApplicationController
     def create
         @property_location = PropertyLocation.new(property_location_hash)
 
+        flash[:previous_page] = flash[:previous_page]
+
         if @property_location.save
             redirect_to flash[:previous_page]
         else
