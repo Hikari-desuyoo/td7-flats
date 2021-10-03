@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <nav>
+      <% if property_owner_signed_in? %>
+        <%= current_property_owner.email %>
+        <%= link_to 'Logout', destroy_property_owner_session_path, method: :delete %>
+        <%= link_to "Cadastrar imóvel", new_property_path, :id => 'register_link' %>
+      <% else %>
+        <%= link_to 'Entrar', new_property_owner_session_path %>
+      <% end %>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

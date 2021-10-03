@@ -47,6 +47,9 @@ describe 'Visitor visit homepage' do
 
     it 'clicks register button, clicks type register button, and gets redirected to register page again' do
         #arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+        login_as property_owner, scope: :property_owner
 
         #act
         visit root_path
@@ -68,6 +71,9 @@ describe 'Visitor visit homepage' do
       end
 
     it 'clicks type register button and goes back (to register page)' do
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+        login_as property_owner, scope: :property_owner
         visit root_path
         find("#register_link").click
         register_path = current_path

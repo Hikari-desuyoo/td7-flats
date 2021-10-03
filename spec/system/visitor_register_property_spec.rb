@@ -9,6 +9,10 @@ describe 'Visitor visit homepage, clicks register' do
     PropertyType.create!(name: 'casa')
     PropertyLocation.create!(name: 'minas gerais')
 
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
+
     visit root_path
     find("#register_link").click
     fill_in 'property_title', with: 'titulo1'
@@ -38,6 +42,10 @@ describe 'Visitor visit homepage, clicks register' do
   it 'and fills in nothing and get error messages' do
     PropertyType.create!(name: 'casa')
     PropertyLocation.create!(name: 'minas gerais')
+
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
     
     visit root_path
     find("#register_link").click
@@ -49,6 +57,10 @@ describe 'Visitor visit homepage, clicks register' do
   it 'and fills in text into integer fields and get error messages' do
     PropertyType.create!(name: 'casa')
     PropertyLocation.create!(name: 'minas gerais')
+
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
     
     visit root_path
     find("#register_link").click
@@ -69,6 +81,9 @@ describe 'Visitor visit homepage, clicks register' do
   end
 
   it 'and goes back to menu' do
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
     visit root_path
     find("#register_link").click
     find(".back_button").click
