@@ -1,0 +1,15 @@
+<h1>Meus imóveis</h1>
+<div id="properties">
+<% @properties.each do |property| %>
+    <div id=<%= "property-#{property.id}" %>>
+        <h3>
+            <%= link_to property.title, property_path(property), :class => "details_link title" %>
+        </h3>
+        <h4>
+            <p class="description"><%= property.description %>
+            <p class="type">Tipo de imóvel: <%= property.property_type.name.capitalize %>
+        </h4> 
+    </div>
+    <br>
+<% end %>
+</div>

@@ -9,6 +9,8 @@ describe 'Visitor visit homepage, clicks first edit button' do
     property_type = PropertyType.create(name: 'casa')
     rio = PropertyLocation.create!(name: 'rio')
 
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
@@ -16,6 +18,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       parking_available: true,
       allow_pets: false,
       daily_price: 400.25,
+      property_owner: property_owner,
       bathrooms: 5,
       property_location: rio, 
       property_type: property_type
@@ -46,6 +49,8 @@ describe 'Visitor visit homepage, clicks first edit button' do
 
     rio = PropertyLocation.create!(name: 'rio')
 
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
@@ -53,6 +58,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       parking_available: true,
       allow_pets: false,
       daily_price: 400.25,
+      property_owner: property_owner,
       bathrooms: 5,
       property_location: rio, 
       property_type: apartamento
@@ -75,12 +81,15 @@ describe 'Visitor visit homepage, clicks first edit button' do
     rio = PropertyLocation.create!(name: 'rio')
     minas = PropertyLocation.create!(name: 'minas')
 
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
     Property.create!({ 
       title: 'titulo1', 
       description: 'descrição1',
       rooms: 3, 
       parking_available: true,
       allow_pets: false,
+      property_owner: property_owner,
       daily_price: 400.25,
       bathrooms: 5,
       property_location: rio, 
@@ -102,6 +111,8 @@ describe 'Visitor visit homepage, clicks first edit button' do
     casa = PropertyType.create(name: 'casa')
     apartamento = PropertyType.create(name: 'apartamento')
 
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+    
     rio = PropertyLocation.create!(name: 'rio')
 
     Property.create!({ 
@@ -112,6 +123,7 @@ describe 'Visitor visit homepage, clicks first edit button' do
       allow_pets: false,
       daily_price: 400.25,
       bathrooms: 5,
+      property_owner: property_owner,
       property_location: rio, 
       property_type: apartamento
     })

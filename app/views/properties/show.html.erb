@@ -3,6 +3,9 @@
     <h2 class='description'><%= @property.description %></h2>
     <aside> <%= link_to 'Editar', edit_property_path(@property), :id => 'edit_link' %> </aside>
     <dl>
+        <dt>De:</dt>
+        <dd class='property_owner'> <%= @property.property_owner.email %></dd>
+
         <dt>Tipo:</dt>
         <dd class='property_type'> <%= @property.property_type.name.capitalize %></dd>
 

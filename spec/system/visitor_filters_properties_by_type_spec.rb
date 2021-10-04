@@ -9,6 +9,8 @@ describe 'Visitor visit homepage, filters by property type' do
 
       rio = PropertyLocation.create!(name: 'rio')
 
+      property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
       properties = []
 
       properties << Property.create!({ 
@@ -19,6 +21,7 @@ describe 'Visitor visit homepage, filters by property type' do
         daily_price: 400,
         property_type: casa,
         property_location: rio,
+        property_owner: property_owner,
         parking_available: true
       })
     
@@ -29,6 +32,7 @@ describe 'Visitor visit homepage, filters by property type' do
         bathrooms: 2,
         daily_price: 401,
         property_type: pousada,
+        property_owner: property_owner,
         property_location: rio,
         parking_available: false
       })
@@ -54,6 +58,8 @@ describe 'Visitor visit homepage, filters by property type' do
         apartamento = PropertyType.create!(name: 'apartamento')
         sitio = PropertyType.create!(name: 'sitio')
 
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
         rio = PropertyLocation.create!(name: 'rio')
 
         properties = []
@@ -65,6 +71,7 @@ describe 'Visitor visit homepage, filters by property type' do
           daily_price: 400,
           property_type: casa,
           property_location: rio,
+          property_owner: property_owner,
           parking_available: true
         })
       
@@ -75,6 +82,7 @@ describe 'Visitor visit homepage, filters by property type' do
           bathrooms: 2,
           daily_price: 401,
           property_type: casa,
+          property_owner: property_owner,
           property_location: rio,
           parking_available: false
         })
@@ -85,6 +93,7 @@ describe 'Visitor visit homepage, filters by property type' do
           rooms: 2, 
           bathrooms: 9,
           daily_price: 402,
+          property_owner: property_owner,
           property_type: sitio,
           property_location: rio,
           parking_available: false
@@ -96,6 +105,7 @@ describe 'Visitor visit homepage, filters by property type' do
           rooms: 3, 
           parking_available: false,
           bathrooms: 32,
+          property_owner: property_owner,
           daily_price: 403,
           property_type: apartamento,
           property_location: rio,
@@ -120,7 +130,10 @@ describe 'Visitor visit homepage, filters by property type' do
         sitio = PropertyType.create!(name: 'sitio')
 
         rio = PropertyLocation.create!(name: 'rio')
-    
+
+
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
         properties << Property.create!({ 
           title: 'titulo1', 
           description: 'descrição1',
@@ -128,6 +141,7 @@ describe 'Visitor visit homepage, filters by property type' do
           bathrooms: 7,
           daily_price: 400,
           property_type: casa,
+          property_owner: property_owner,
           property_location: rio,
           parking_available: true
         })
@@ -137,6 +151,7 @@ describe 'Visitor visit homepage, filters by property type' do
           description: 'descrição2',
           rooms: 20, 
           bathrooms: 2,
+          property_owner: property_owner,
           daily_price: 401,
           property_type: casa,
           property_location: rio,
@@ -151,6 +166,7 @@ describe 'Visitor visit homepage, filters by property type' do
           daily_price: 402,
           property_type: sitio,
           property_location: rio,
+          property_owner: property_owner,
           parking_available: false
         })
       
@@ -162,6 +178,7 @@ describe 'Visitor visit homepage, filters by property type' do
           bathrooms: 32,
           property_location: rio,
           daily_price: 403,
+          property_owner: property_owner,
           property_type: apartamento,
           allow_pets: true
         })

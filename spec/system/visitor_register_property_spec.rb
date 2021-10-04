@@ -36,6 +36,8 @@ describe 'Visitor visit homepage, clicks register' do
     expect(page).to have_css(css_beginning + 'parking_available', text: 'sim')
     expect(page).to have_css(css_beginning + 'property_type', text: 'Casa')
     expect(page).to have_css(css_beginning + 'property_location', text: 'minas gerais')
+    expect(page).to have_css(css_beginning + 'property_owner', text: 'jane@doe.com.br')
+
 
   end
 

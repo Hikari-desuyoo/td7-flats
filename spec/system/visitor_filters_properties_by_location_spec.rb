@@ -11,6 +11,8 @@ describe 'Visitor visit homepage, filters by property location' do
 
       properties = []
 
+      property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
       properties << Property.create!({ 
         title: 'titulo1', 
         description: 'descrição1',
@@ -19,6 +21,7 @@ describe 'Visitor visit homepage, filters by property location' do
         daily_price: 400,
         property_type: pousada,
         property_location: rio,
+        property_owner: property_owner,
         parking_available: true
       })
     
@@ -30,6 +33,7 @@ describe 'Visitor visit homepage, filters by property location' do
         daily_price: 401,
         property_type: pousada,
         property_location: minas,
+        property_owner: property_owner,
         parking_available: false
       })
 
@@ -54,6 +58,8 @@ describe 'Visitor visit homepage, filters by property location' do
         rio = PropertyLocation.create!(name: 'rio')
         minas = PropertyLocation.create!(name: 'minas')
 
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
         properties = []
         properties << Property.create!({ 
           title: 'titulo1', 
@@ -61,6 +67,7 @@ describe 'Visitor visit homepage, filters by property location' do
           rooms: 3, 
           bathrooms: 7,
           daily_price: 400,
+          property_owner: property_owner,
           property_type: pousada,
           property_location: minas,
           parking_available: true
@@ -72,6 +79,7 @@ describe 'Visitor visit homepage, filters by property location' do
           rooms: 20, 
           bathrooms: 2,
           daily_price: 401,
+          property_owner: property_owner,
           property_type: pousada,
           property_location: minas,
           parking_available: false
@@ -83,6 +91,7 @@ describe 'Visitor visit homepage, filters by property location' do
           rooms: 2, 
           bathrooms: 9,
           daily_price: 402,
+          property_owner: property_owner,
           property_type: pousada,
           property_location: minas,
           parking_available: false
@@ -95,6 +104,7 @@ describe 'Visitor visit homepage, filters by property location' do
           parking_available: false,
           bathrooms: 32,
           daily_price: 403,
+          property_owner: property_owner,
           property_type: pousada,
           property_location: minas,
           allow_pets: true
@@ -115,6 +125,8 @@ describe 'Visitor visit homepage, filters by property location' do
 
         casa = PropertyType.create!(name: 'casa')
 
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+        
         rio = PropertyLocation.create!(name: 'rio')
         minas = PropertyLocation.create!(name: 'minas')
         sp = PropertyLocation.create!(name: 'sao paulo')
@@ -126,6 +138,7 @@ describe 'Visitor visit homepage, filters by property location' do
           bathrooms: 7,
           daily_price: 400,
           property_type: casa,
+          property_owner: property_owner,
           property_location: rio,
           parking_available: true
         })
@@ -136,6 +149,7 @@ describe 'Visitor visit homepage, filters by property location' do
           rooms: 20, 
           bathrooms: 2,
           daily_price: 401,
+          property_owner: property_owner,
           property_type: casa,
           property_location: minas,
           parking_available: false
@@ -147,6 +161,7 @@ describe 'Visitor visit homepage, filters by property location' do
           rooms: 2, 
           bathrooms: 9,
           daily_price: 402,
+          property_owner: property_owner,
           property_type: casa,
           property_location: sp,
           parking_available: false
@@ -159,6 +174,7 @@ describe 'Visitor visit homepage, filters by property location' do
           parking_available: false,
           bathrooms: 32,
           property_location: sp,
+          property_owner: property_owner,
           daily_price: 403,
           property_type: casa,
           allow_pets: true

@@ -4,6 +4,7 @@ def preset_properties
   properties = []
   property_type = PropertyType.create(name: 'casa')
   property_location = PropertyLocation.create(name: 'rio de janeiro')
+  property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
   properties << Property.create!({ 
     title: 'titulo1', 
     description: 'descrição1',
@@ -12,6 +13,7 @@ def preset_properties
     daily_price: 400,
     property_type: property_type,
     property_location: property_location,
+    property_owner: property_owner,
     parking_available: true
   })
 
@@ -22,6 +24,7 @@ def preset_properties
     bathrooms: 2,
     daily_price: 401,
     property_type: property_type,
+    property_owner: property_owner,
     property_location: property_location,
     parking_available: false
   })
@@ -33,6 +36,7 @@ def preset_properties
     bathrooms: 9,
     daily_price: 402,
     property_type: property_type,
+    property_owner: property_owner,
     property_location: property_location,
     parking_available: false
   })
@@ -43,6 +47,7 @@ def preset_properties
     rooms: 3, 
     parking_available: false,
     bathrooms: 32,
+    property_owner: property_owner,
     daily_price: 403,
     property_type: property_type,
     property_location: property_location,

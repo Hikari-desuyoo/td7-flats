@@ -11,6 +11,8 @@ describe 'Visitor visit homepage, filters by property type and location' do
         rio = PropertyLocation.create!(name: 'rio')
         minas = PropertyLocation.create!(name: 'minas')
 
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
         properties = []
         properties << Property.create!({ 
           title: 'titulo1', 
@@ -20,6 +22,7 @@ describe 'Visitor visit homepage, filters by property type and location' do
           daily_price: 400,
           property_type: casa,
           property_location: minas,
+          property_owner: property_owner,
           parking_available: true
         })
       
@@ -31,6 +34,7 @@ describe 'Visitor visit homepage, filters by property type and location' do
           daily_price: 401,
           property_type: casa,
           property_location: rio,
+          property_owner: property_owner,
           parking_available: false
         })
       
@@ -41,6 +45,7 @@ describe 'Visitor visit homepage, filters by property type and location' do
           bathrooms: 9,
           daily_price: 402,
           property_type: sitio,
+          property_owner: property_owner,
           property_location: rio,
           parking_available: false
         })
@@ -53,6 +58,7 @@ describe 'Visitor visit homepage, filters by property type and location' do
           bathrooms: 32,
           daily_price: 403,
           property_type: apartamento,
+          property_owner: property_owner,
           property_location: minas,
           allow_pets: true
         })

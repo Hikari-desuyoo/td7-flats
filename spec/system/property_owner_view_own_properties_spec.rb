@@ -7,7 +7,7 @@ describe 'Property owner view own properties' do
         login_as property_owner, scope: :property_owner
         visit root_path
 
-        expect(page).to have_link("Meus imóveis", href: 'my_properties_properties')
+        expect(page).to have_link("Meus imóveis", href: my_properties_properties_path)
     end
 
     it 'and should view owned properties' do
@@ -42,7 +42,7 @@ describe 'Property owner view own properties' do
         #Act
         login_as property_owner, scope: :property_owner
         visit root_path
-        click_on 'Meus Imóveis'
+        click_on 'Meus imóveis'
 
         #Assert
         expect(page).to have_content property1.title
