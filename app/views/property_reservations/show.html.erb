@@ -1,0 +1,9 @@
+<h3> Reserva do Imóvel <%= @property_reservation.property_title %></h3>
+<dl>
+    <dt>Data de início</dt>
+    <dd><%= l @property_reservation.start_date %></dd>
+    <dt>Data de término</dt>
+    <dd><%= l @property_reservation.end_date %></dd>
+    <dt>Valor total</dt>
+    <dd><%= @property_reservation.total_value %></dd>
+</dl>
