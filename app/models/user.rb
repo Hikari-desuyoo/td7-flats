@@ -6,3 +6,4 @@ class User < ApplicationRecord
 
   has_many :property_reservations
   has_many :properties, through: :property_reservations
+end

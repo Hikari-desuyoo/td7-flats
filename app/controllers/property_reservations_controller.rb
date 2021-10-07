@@ -3,7 +3,6 @@ class PropertyReservationsController < ApplicationController
         @property_reservation = PropertyReservation.new(property_reservation_params)
         @property_reservation.property = Property.find(params[:property_id])
         @property_reservation.user = current_user
-        @property_reservation.total_value = 1
 
         @property_reservation.save!
 
@@ -11,7 +10,7 @@ class PropertyReservationsController < ApplicationController
     end
 
     def show
-        @property_reservation = PropertyReservation.find(:id)
+        @property_reservation = PropertyReservation.find(params[:id])
     end
 
     private

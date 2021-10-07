@@ -17,17 +17,17 @@ describe 'user books property' do
 
         user = User.create!(email: 'jane2@doe.com.br', password: '123456789')
 
-        login_as user, scope: user
+        login_as user, scope: :user
         visit root_path
         click_on property.title
-        fill_in 'Data de início', with: '06/10/2021'
-        fill_in 'Data de término', with: '10/10/2021'
+        fill_in 'Data de início', with: '06/10/2021', :match => :prefer_exact
+        fill_in 'Data de término', with: '10/10/2021', :match => :prefer_exact
         fill_in 'Quantidade de pessoas', with: '3'
         click_on 'Enviar reserva'
 
         expect(page).to have_content('06/10/2021')
         expect(page).to have_content('10/10/2021')
-        expect(page).to have_content('/3/')
+        expect(page).to have_content('3')
         expect(page).to have_content('R$ 400,00')
 
     end
