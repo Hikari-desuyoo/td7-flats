@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :property_locations, only: [:new, :create]
   resources :property_reservations, only: %i[show]
 
+  get 'my_profile',  to: 'users#my_profile'
+
 
   #devise_for :users, path: 'users'
   #devise_for :property_owners, path: 'property_owners'

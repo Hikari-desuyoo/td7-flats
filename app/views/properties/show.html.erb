@@ -29,19 +29,36 @@
     <dl>
 </div>
 
-<h3>Verificar datas</h3>
-<%= form_with model: [@property, @property_reservation] do |f| %>
-    <%= f.label :start_date, 'Data de início' %>
-    <%= f.date_field :start_date %>
+<% if property_owner_signed_in? %>
+    <h3>Reservas</h3>
+    <% @property.property_reservations.each do |pr| %>
+        <h4>Reserva de <%= pr.user.email %></h4>
+        <dl>
+            <dt>Data de inicio</dt>
+            <dd><%= l pr.start_date %></dd>
 
-    <%= f.label :end_date, 'Data de término' %>
-    <%= f.date_field :end_date %>
+            <dt>Data de termino</dt>
+            <dd><%= l pr.end_date %></dd>
 
-    <%= f.label :guests, 'Quantidade de pessoas' %>
-    <%= f.number_field :guests, step: 1 %>
+            <dt>Total de pessoas</dt>
+            <dd><%= pr.guests %></dd>
 
-    <%= f.submit 'Enviar reserva' %>
+        </dl>
+    <% end %>
+<% else %>
+    <h3>Verificar datas</h3>
+    <%= form_with model: [@property, @property_reservation] do |f| %>
+        <%= f.label :start_date, 'Data de início' %>
+        <%= f.date_field :start_date %>
 
+        <%= f.label :end_date, 'Data de término' %>
+        <%= f.date_field :end_date %>
+
+        <%= f.label :guests, 'Quantidade de pessoas' %>
+        <%= f.number_field :guests, step: 1 %>
+
+        <%= f.submit 'Enviar reserva' %>
+    <% end %>
 <% end %>
 
 <%= link_to 'Voltar', root_path, :class => 'back_button' %>
